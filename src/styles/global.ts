@@ -45,8 +45,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    min-height: 100vh;
-
     background-color: var(--color-background);
 
     font-size: 1rem;
