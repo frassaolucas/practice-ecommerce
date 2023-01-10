@@ -24,14 +24,18 @@ export const GlobalStyles = createGlobalStyle`
     --color-white: #FFFFFF;
     --color-background: #FAFAFA;
 
+    // Font family
+    --font-family-header: 'Baloo 2', cursive;
+    --font-family-text: 'Roboto', sans-serif;
+
     // Font weight
     --font-weight-regular: 400;
     --font-weight-bold: 700;
     --font-weight-x-bold: 800;
 
     // Line height
-    --line-height-default: 130%;
-    --line-height-bigger: 160%;
+    --line-height-default: 1.3;
+    --line-height-bigger: 1.6;
   }
 
   * {
@@ -41,14 +45,15 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body, input, button {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family-text);
+    line-height: var(--line-height-default);
+    -webkit-font-smoothing: antialiased;
   }
 
   body {
     background-color: var(--color-background);
 
     font-size: 1rem;
-    line-height: var(--line-height-default);
   }
 
   input {
@@ -65,5 +70,9 @@ export const GlobalStyles = createGlobalStyle`
     outline: none;
 
     cursor: pointer;
+  }
+
+  img {
+    max-width: 100%;
   }
 `;

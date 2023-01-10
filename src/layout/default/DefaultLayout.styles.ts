@@ -10,4 +10,5 @@ export const Container = styled.div`
   flex-direction: column;
 
   margin: 0 auto;
+  padding: 0 1rem;
 `;
