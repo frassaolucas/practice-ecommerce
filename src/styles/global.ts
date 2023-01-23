@@ -56,13 +56,13 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1rem;
   }
 
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-family-header);
+  }
+
   input {
     box-shadow: none;
     outline: none;
-
-    color: var(--color-base-input);
-
-    font-size: 0.875rem;
   }
 
   button {
