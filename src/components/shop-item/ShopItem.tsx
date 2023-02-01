@@ -1,6 +1,8 @@
-import { QuantityInput } from '@/components/quantity-input';
 import { ShoppingCart } from 'phosphor-react';
 
+import { QuantityInput } from '@/components/quantity-input';
+
+import { useShopItem } from './ShopItem.hooks';
 import {
   AddToCartButton,
   ShopItemBuyActions,
@@ -13,32 +15,35 @@ import {
   ShopItemTag,
   ShopItemTagsContainer,
 } from './ShopItem.styles';
+import { ShopItemProps } from './ShopItem.types';
 
-export function ShopItem() {
+export function ShopItem({ data, onChangeQuantity }: ShopItemProps) {
+  const { productData } = useShopItem({ data });
+
   return (
     <ShopItemContainer>
-      <ShopItemImage src="https://picsum.photos/120" />
+      <ShopItemImage src={productData.image} />
 
       <ShopItemTagsContainer>
-        <ShopItemTag>tradicional</ShopItemTag>
-        <ShopItemTag>com leite</ShopItemTag>
+        {productData.tags.map((tag) => (
+          <ShopItemTag key={tag}>{tag}</ShopItemTag>
+        ))}
       </ShopItemTagsContainer>
 
-      <ShopItemName>Café com Leite</ShopItemName>
+      <ShopItemName>{productData.name}</ShopItemName>
 
-      <ShopItemDescription>
-        Meio a meio de expresso tradicional com leite vaporizado
-      </ShopItemDescription>
+      <ShopItemDescription>{productData.description}</ShopItemDescription>
 
       <ShopItemBuyContainer>
         <ShopItemPrice>
-          R$ <span>9,90</span>
+          R$ <span>{productData.price}</span>
         </ShopItemPrice>
 
         <ShopItemBuyActions>
           <QuantityInput
             type="number"
-            onChange={(value: number) => console.log('value', value)}
+            value={productData.quantity}
+            onChange={(value: number) => onChangeQuantity(value)}
           />
 
           <AddToCartButton>

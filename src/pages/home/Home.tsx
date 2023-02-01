@@ -1,4 +1,4 @@
-import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
 
 import {
   HomeContainer,
@@ -8,12 +8,15 @@ import {
   IntroTitle,
   ProductsContainer,
   ProductsGrid,
-} from "./Home.styles";
+} from './Home.styles';
 
-import IntroImg from "@/assets/images/intro-image.png";
-import { ShopItem } from "@/components/shop-item";
+import IntroImg from '@/assets/images/intro-image.png';
+import { ShopItem } from '@/components/shop-item';
+import { useHome } from './Home.hooks';
 
 export function Home() {
+  const { products, onChangeProductQuantity } = useHome();
+
   return (
     <HomeContainer>
       <IntroContainer>
@@ -63,21 +66,15 @@ export function Home() {
         <h2>Nossos Cafés</h2>
 
         <ProductsGrid>
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
-          <ShopItem />
+          {products.map((product, index) => (
+            <ShopItem
+              key={product.name}
+              data={product}
+              onChangeQuantity={(quantity) =>
+                onChangeProductQuantity(quantity, index)
+              }
+            />
+          ))}
         </ProductsGrid>
       </ProductsContainer>
     </HomeContainer>

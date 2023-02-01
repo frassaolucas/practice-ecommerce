@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useRef, useState } from 'react';
 import { InputProps } from './QuantityInput.types';
 
 export function useQuantityInput(props: InputProps) {
@@ -8,20 +8,19 @@ export function useQuantityInput(props: InputProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    onChange && onChange(numberValue);
-  }, [numberValue]);
-
   function onChangeNumberValue(event: ChangeEvent<HTMLInputElement>) {
     setNumberValue(Number(event.target.value));
+    onChange && onChange(numberValue);
   }
 
   function handleDecreaseNumberValue() {
     setNumberValue((prevState) => (prevState - 1 < 0 ? 0 : prevState - 1));
+    onChange && onChange(numberValue);
   }
 
   function handleIncreaseNumberValue() {
     setNumberValue((prevState) => prevState + 1);
+    onChange && onChange(numberValue);
   }
 
   return {

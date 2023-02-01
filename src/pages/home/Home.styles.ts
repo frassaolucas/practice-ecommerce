@@ -1,8 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HomeContainer = styled.main`
   display: flex;
   flex-direction: column;
+
+  margin-bottom: 4rem;
 `;
 
 export const IntroContainer = styled.section`
