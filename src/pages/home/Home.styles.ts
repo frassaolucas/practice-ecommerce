@@ -9,7 +9,7 @@ export const HomeContainer = styled.main`
 
 export const IntroContainer = styled.section`
   display: grid;
-  grid-template-columns: 1fr min(29.75rem, max-content);
+  grid-template-columns: 1fr minmax(29.75rem, 1fr);
   grid-template-rows: repeat(2, auto);
   column-gap: 3.5rem;
   row-gap: 4.125rem;
@@ -58,6 +58,8 @@ export const IntroItems = styled.ul`
   }
 
   .item-icon {
+    flex-shrink: 0;
+
     width: 2rem;
     height: 2rem;
 
@@ -103,7 +105,7 @@ export const ProductsContainer = styled.section`
 export const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 16rem);
-  justify-items: center;
-  column-gap: 2rem;
+  justify-content: center;
+  column-gap: 1rem;
   row-gap: 2.5rem;
 `;
