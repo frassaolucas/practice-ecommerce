@@ -1,4 +1,4 @@
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
+import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 
 import {
   HomeContainer,
@@ -6,9 +6,12 @@ import {
   IntroImage,
   IntroItems,
   IntroTitle,
-} from './Home.styles';
+  ProductsContainer,
+  ProductsGrid,
+} from "./Home.styles";
 
-import IntroImg from '@/assets/images/intro-image.png';
+import IntroImg from "@/assets/images/intro-image.png";
+import { ShopItem } from "@/components/shop-item";
 
 export function Home() {
   return (
@@ -55,6 +58,28 @@ export function Home() {
 
         <IntroImage src={IntroImg} />
       </IntroContainer>
+
+      <ProductsContainer>
+        <h2>Nossos Cafés</h2>
+
+        <ProductsGrid>
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+          <ShopItem />
+        </ProductsGrid>
+      </ProductsContainer>
     </HomeContainer>
   );
 }

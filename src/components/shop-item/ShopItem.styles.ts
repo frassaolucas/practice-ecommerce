@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ShopItemContainer = styled.div`
+  width: 16rem;
   height: 19.5rem;
 
   display: flex;

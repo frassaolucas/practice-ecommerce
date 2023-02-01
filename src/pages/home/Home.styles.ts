@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HomeContainer = styled.main`
   display: flex;
@@ -83,4 +83,25 @@ export const IntroItems = styled.ul`
 export const IntroImage = styled.img`
   grid-column: 2;
   grid-row: 1 / -1;
+`;
+
+export const ProductsContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 3.375rem;
+
+  h2 {
+    color: var(--color-base-subtitle);
+
+    font-size: 2rem;
+    font-weight: 800;
+  }
+`;
+
+export const ProductsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 16rem);
+  justify-items: center;
+  column-gap: 2rem;
+  row-gap: 2.5rem;
 `;
