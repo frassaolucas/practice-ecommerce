@@ -9,18 +9,24 @@ export function useQuantityInput(props: InputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   function onChangeNumberValue(event: ChangeEvent<HTMLInputElement>) {
-    setNumberValue(Number(event.target.value));
-    onChange && onChange(numberValue);
+    const value = Number(event.target.value);
+
+    setNumberValue(value);
+    onChange && onChange(value);
   }
 
   function handleDecreaseNumberValue() {
-    setNumberValue((prevState) => (prevState - 1 < 0 ? 0 : prevState - 1));
-    onChange && onChange(numberValue);
+    const decreasedValue = numberValue - 1 < 0 ? 0 : numberValue - 1;
+
+    setNumberValue(decreasedValue);
+    onChange && onChange(decreasedValue);
   }
 
   function handleIncreaseNumberValue() {
-    setNumberValue((prevState) => prevState + 1);
-    onChange && onChange(numberValue);
+    const increasedValue = numberValue + 1;
+
+    setNumberValue(increasedValue);
+    onChange && onChange(increasedValue);
   }
 
   return {
