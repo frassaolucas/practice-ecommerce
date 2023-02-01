@@ -15,7 +15,7 @@ import { ShopItem } from '@/components/shop-item';
 import { useHome } from './Home.hooks';
 
 export function Home() {
-  const { products, onChangeProductQuantity } = useHome();
+  const { products } = useHome();
 
   return (
     <HomeContainer>
@@ -66,14 +66,8 @@ export function Home() {
         <h2>Nossos Cafés</h2>
 
         <ProductsGrid>
-          {products.map((product, index) => (
-            <ShopItem
-              key={product.name}
-              data={product}
-              onChangeQuantity={(quantity) =>
-                onChangeProductQuantity(quantity, index)
-              }
-            />
+          {products.map((product) => (
+            <ShopItem key={product.id} data={product} />
           ))}
         </ProductsGrid>
       </ProductsContainer>

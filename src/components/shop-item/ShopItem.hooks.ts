@@ -1,3 +1,5 @@
+import { useCart } from '@/hooks/cart/cart.hooks';
+
 import { UseShopItemProps } from './ShopItem.types';
 
 export const useShopItem = ({ data }: UseShopItemProps) => {
@@ -8,5 +10,11 @@ export const useShopItem = ({ data }: UseShopItemProps) => {
     ),
   };
 
-  return { productData };
+  const { addToCart } = useCart();
+
+  const handleChangeQuantity = (productId: number, quantity: number) => {
+    addToCart(productId, quantity);
+  };
+
+  return { productData, handleChangeQuantity };
 };

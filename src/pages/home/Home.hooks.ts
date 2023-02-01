@@ -10,27 +10,12 @@ export const useHome = () => {
   useEffect(() => {
     (async () => {
       const productsList = await getProducts();
-      const productsListWithQuantity = productsList.map((product) => ({
-        ...product,
-        quantity: 1,
-      }));
 
-      setProducts(productsListWithQuantity);
+      setProducts(productsList);
     })();
   }, []);
 
-  const onChangeProductQuantity = (quantity: number, productIndex: number) => {
-    setProducts((prevState) => {
-      const productsList = [...prevState];
-
-      productsList[productIndex].quantity = quantity;
-
-      return productsList;
-    });
-  };
-
   return {
     products,
-    onChangeProductQuantity,
   };
 };

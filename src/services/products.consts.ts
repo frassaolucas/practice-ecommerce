@@ -17,6 +17,7 @@ import { Products } from './products.types';
 
 export const products: Products[] = [
   {
+    id: 1,
     image: imageExpressoTradicional,
     name: 'Expresso Tradicional',
     description: 'O tradicional café feito com água quente e grãos moídos',
@@ -24,6 +25,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 2,
     image: imageExpressoAmericano,
     name: 'Expresso Americano',
     description: 'Expresso diluído, menos intenso que o tradicional',
@@ -31,6 +33,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 3,
     image: imageExpressoCremoso,
     name: 'Expresso Cremoso',
     description: 'Café expresso tradicional com espuma cremosa',
@@ -38,6 +41,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 4,
     image: imageExpressoGelado,
     name: 'Expresso Gelado',
     description: 'Bebida preparada com café expresso e cubos de gelo',
@@ -45,6 +49,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 5,
     image: imageCafeComLeite,
     name: 'Café com Leite',
     description: 'Meio a meio de expresso tradicional com leite vaporizado',
@@ -52,6 +57,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 6,
     image: imageLatte,
     name: 'Latte',
     description:
@@ -60,6 +66,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 7,
     image: imageCappuccino,
     name: 'Cappuccino',
     description:
@@ -68,6 +75,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 8,
     image: imageMacchiato,
     name: 'Macchiato',
     description: 'Café expresso misturado com um pouco deleite quente e espuma',
@@ -75,6 +83,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 9,
     image: imageMocaccino,
     name: 'Mocaccino',
     description: 'Café expresso com calda de chocolate, pouco leite e espuma',
@@ -82,6 +91,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 10,
     image: imageChocolateQuente,
     name: 'Chocolate Quente',
     description: 'Bebida feita com chocolate dissolvido no leite quente e café',
@@ -89,6 +99,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 11,
     image: imageCubano,
     name: 'Cubano',
     description:
@@ -97,6 +108,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 12,
     image: imageHavaiano,
     name: 'Havaiano',
     description: 'Bebida adocicada preparada com café e leite de coco',
@@ -104,6 +116,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 13,
     image: imageArabe,
     name: 'Árabe',
     description: 'Bebida preparada com grãos de café árabe e especiarias',
@@ -111,6 +124,7 @@ export const products: Products[] = [
     price: 9.9,
   },
   {
+    id: 14,
     image: imageIrlandes,
     name: 'Irlandês',
     description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
