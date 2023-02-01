@@ -1,21 +1,26 @@
 import { createContext, useState } from 'react';
 
-import { Outlet } from 'react-router-dom';
-
-import { CartContextValues, CartItem } from './cart.types';
+import { CartContextValues, CartItem, CartProviderProps } from './cart.types';
 
 export const CartContext = createContext<CartContextValues>(
   {} as CartContextValues
 );
 
-export const CartProvider: React.FC = () => {
+export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartList, setCartList] = useState<CartItem[]>([]);
 
   const addToCart = (productId: number, quantity: number) => {
-    setCartList((prevState) => [
-      ...prevState,
-      { id: productId, quantity: quantity },
-    ]);
+    let cart = [...cartList];
+
+    const productIndex = cart.findIndex((item) => item.id === productId);
+
+    if (productIndex !== -1) {
+      cart[productIndex].quantity += quantity;
+    } else {
+      cart = [...cart, { id: productId, quantity: quantity }];
+    }
+
+    setCartList(cart);
   };
 
   return (
@@ -25,7 +30,7 @@ export const CartProvider: React.FC = () => {
         addToCart,
       }}
     >
-      <Outlet />
+      {children}
     </CartContext.Provider>
   );
 };

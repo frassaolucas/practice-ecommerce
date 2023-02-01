@@ -1,18 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { getProducts } from '@/services/products.services';
-
-import { Product } from './Home.types';
+import { useProducts } from '@/hooks/products';
 
 export const useHome = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { products, loadProducts } = useProducts();
 
   useEffect(() => {
-    (async () => {
-      const productsList = await getProducts();
-
-      setProducts(productsList);
-    })();
+    loadProducts();
   }, []);
 
   return {

@@ -1,4 +1,6 @@
-import { useCart } from '@/hooks/cart/cart.hooks';
+import { useState } from 'react';
+
+import { useCart } from '@/hooks/cart';
 
 import { UseShopItemProps } from './ShopItem.types';
 
@@ -10,11 +12,17 @@ export const useShopItem = ({ data }: UseShopItemProps) => {
     ),
   };
 
+  const [quantity, setQuantity] = useState<number>(0);
+
   const { addToCart } = useCart();
 
-  const handleChangeQuantity = (productId: number, quantity: number) => {
-    addToCart(productId, quantity);
+  const handleChangeQuantity = (quantity: number) => {
+    setQuantity(quantity);
   };
 
-  return { productData, handleChangeQuantity };
+  const handleAddToCart = () => {
+    addToCart(productData.id, quantity);
+  };
+
+  return { productData, handleChangeQuantity, handleAddToCart };
 };

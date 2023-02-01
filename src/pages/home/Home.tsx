@@ -66,9 +66,13 @@ export function Home() {
         <h2>Nossos Cafés</h2>
 
         <ProductsGrid>
-          {products.map((product) => (
-            <ShopItem key={product.id} data={product} />
-          ))}
+          {products ? (
+            products.map((product) => (
+              <ShopItem key={product.id} data={product} />
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
         </ProductsGrid>
       </ProductsContainer>
     </HomeContainer>

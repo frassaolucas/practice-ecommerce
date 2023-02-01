@@ -18,7 +18,9 @@ import {
 import { ShopItemProps } from './ShopItem.types';
 
 export function ShopItem({ data }: ShopItemProps) {
-  const { productData, handleChangeQuantity } = useShopItem({ data });
+  const { productData, handleChangeQuantity, handleAddToCart } = useShopItem({
+    data,
+  });
 
   return (
     <ShopItemContainer>
@@ -42,12 +44,10 @@ export function ShopItem({ data }: ShopItemProps) {
         <ShopItemBuyActions>
           <QuantityInput
             type="number"
-            onChange={(quantity) =>
-              handleChangeQuantity(productData.id, quantity)
-            }
+            onChange={(quantity) => handleChangeQuantity(quantity)}
           />
 
-          <AddToCartButton>
+          <AddToCartButton onClick={handleAddToCart}>
             <ShoppingCart weight="fill" size={18} />
           </AddToCartButton>
         </ShopItemBuyActions>

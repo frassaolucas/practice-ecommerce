@@ -1,5 +1,7 @@
 import { MapPin, ShoppingCart } from 'phosphor-react';
 
+import { useHeader } from './Header.hooks';
+
 import {
   HeaderActions,
   HeaderContainer,
@@ -11,6 +13,8 @@ import {
 import CoffeeDeliveryLogo from '@/assets/images/logo-coffee-delivery.png';
 
 export function Header() {
+  const { cartList } = useHeader();
+
   return (
     <HeaderContainer>
       <img src={CoffeeDeliveryLogo} />
@@ -24,7 +28,7 @@ export function Header() {
         <ShoppingCartButton>
           <ShoppingCart size={22} weight="fill" />
 
-          <ShoppingCartAmount>3</ShoppingCartAmount>
+          <ShoppingCartAmount>{cartList.length}</ShoppingCartAmount>
         </ShoppingCartButton>
       </HeaderActions>
     </HeaderContainer>
