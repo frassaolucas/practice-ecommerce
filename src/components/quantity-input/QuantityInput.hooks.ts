@@ -1,38 +1,40 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
+
 import { InputProps } from './QuantityInput.types';
 
-export function useQuantityInput(props: InputProps) {
-  const { value = 0, onChange } = props;
-
-  const [numberValue, setNumberValue] = useState<number>(value as number);
-
+export function useQuantityInput({ defaultValue = '0' }: InputProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  function onChangeNumberValue(event: ChangeEvent<HTMLInputElement>) {
-    const value = Number(event.target.value);
+  useEffect(() => {
+    inputRef.current?.setAttribute('value', String(defaultValue));
+  }, []);
 
-    setNumberValue(value);
-    onChange && onChange(value);
-  }
+  const changeEvent = useMemo(() => {
+    return new Event('change', { bubbles: true });
+  }, []);
 
   function handleDecreaseNumberValue() {
-    const decreasedValue = numberValue - 1 < 0 ? 0 : numberValue - 1;
+    if (!inputRef.current) return;
 
-    setNumberValue(decreasedValue);
-    onChange && onChange(decreasedValue);
+    const value = Number(inputRef.current.value);
+    const decreasedValue = value - 1 < 0 ? 0 : value - 1;
+
+    inputRef.current.setAttribute('value', String(decreasedValue));
+    inputRef.current.dispatchEvent(changeEvent);
   }
 
   function handleIncreaseNumberValue() {
-    const increasedValue = numberValue + 1;
+    if (!inputRef.current) return;
 
-    setNumberValue(increasedValue);
-    onChange && onChange(increasedValue);
+    const value = Number(inputRef.current.value);
+    const increasedValue = value + 1;
+
+    inputRef.current.setAttribute('value', String(increasedValue));
+    inputRef.current.dispatchEvent(changeEvent);
   }
 
   return {
-    numberValue,
     inputRef,
-    onChangeNumberValue,
     handleDecreaseNumberValue,
     handleIncreaseNumberValue,
   };

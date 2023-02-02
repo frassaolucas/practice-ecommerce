@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { useCart } from '@/hooks/cart';
 
@@ -16,13 +16,14 @@ export const useShopItem = ({ data }: UseShopItemProps) => {
 
   const { addToCart } = useCart();
 
-  const handleChangeQuantity = (quantity: number) => {
-    setQuantity(quantity);
+  const handleChangeQuantity = (event: ChangeEvent<HTMLInputElement>) => {
+    const quantityValue = Number(event.target.value);
+    setQuantity(quantityValue);
   };
 
   const handleAddToCart = () => {
     addToCart(productData.id, quantity);
   };
 
-  return { productData, handleChangeQuantity, handleAddToCart };
+  return { productData, quantity, handleChangeQuantity, handleAddToCart };
 };

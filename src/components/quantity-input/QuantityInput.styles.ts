@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 type QuantityInputContainerProps = {
   type?: string;
@@ -7,15 +7,11 @@ type QuantityInputContainerProps = {
 export const QuantityInputContainer = styled.div<QuantityInputContainerProps>`
   position: relative;
 
-  ${(props) =>
-    props.type === 'number' &&
-    css`
-      max-width: 5rem;
+  max-width: 5rem;
 
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    `};
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 
   padding: 0.5rem;
 
@@ -26,19 +22,17 @@ export const QuantityInputContainer = styled.div<QuantityInputContainerProps>`
   color: var(--color-base-label);
 
   input {
+    width: 100%;
+
     border: 0;
 
     background: transparent;
 
-    &[type='number'] {
-      width: 100%;
+    text-align: center;
 
-      text-align: center;
-
-      &::-webkit-inner-spin-button,
-      &::-webkit-outer-spin-button {
-        appearance: none;
-      }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
     }
   }
 
