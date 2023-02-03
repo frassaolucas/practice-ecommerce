@@ -6,7 +6,7 @@ import { useCart } from '@/hooks/cart';
 
 import { UseShopItemProps } from './ShopItem.types';
 
-export const useShopItem = ({ data }: UseShopItemProps) => {
+export function useShopItem({ data }: UseShopItemProps) {
   const productData = {
     ...data,
     price: new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(
@@ -34,4 +34,4 @@ export const useShopItem = ({ data }: UseShopItemProps) => {
   };
 
   return { productData, quantity, handleChangeQuantity, handleAddToCart };
-};
+}

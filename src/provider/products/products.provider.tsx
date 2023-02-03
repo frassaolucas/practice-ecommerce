@@ -12,7 +12,7 @@ export const ProductsContext = createContext<ProductsContextValues>(
   {} as ProductsContextValues
 );
 
-export const ProductsProvider = ({ children }: ProductsProviderProps) => {
+export function ProductsProvider({ children }: ProductsProviderProps) {
   const [products, setProducts] = useState<Product[]>([]);
 
   const loadProducts = async (): Promise<void> => {
@@ -26,4 +26,4 @@ export const ProductsProvider = ({ children }: ProductsProviderProps) => {
       {children}
     </ProductsContext.Provider>
   );
-};
+}

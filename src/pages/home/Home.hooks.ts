@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useProducts } from '@/hooks/products';
 
-export const useHome = () => {
+export function useHome() {
   const { products, loadProducts } = useProducts();
 
   useEffect(() => {
@@ -12,4 +12,4 @@ export const useHome = () => {
   return {
     products,
   };
-};
+}

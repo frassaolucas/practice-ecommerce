@@ -1,7 +1,7 @@
 import { useCart } from '@/hooks/cart';
 
-export const useHeader = () => {
+export function useHeader() {
   const { cartList } = useCart();
 
   return { cartList };
-};
+}

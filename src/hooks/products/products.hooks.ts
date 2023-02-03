@@ -2,6 +2,6 @@ import { useContext } from 'react';
 
 import { ProductsContext, ProductsContextValues } from '@/provider/products';
 
-export const useProducts = (): ProductsContextValues => {
+export function useProducts(): ProductsContextValues {
   return useContext(ProductsContext);
-};
+}
