@@ -27,9 +27,13 @@ export function useShopItem({ data }: UseShopItemProps) {
     if (quantity > 0) {
       addToCart(productData.id, quantity);
 
-      toast.success('O item foi adicionado ao carrinho.');
+      toast.success('O item foi adicionado ao carrinho.', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     } else {
-      toast.error('Adicione quantidade maior a zero.');
+      toast.error('Adicione quantidade maior a zero.', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   };
 
