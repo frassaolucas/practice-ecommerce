@@ -1,5 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 
+import { toast } from 'react-toastify';
+
 import { useCart } from '@/hooks/cart';
 
 import { UseShopItemProps } from './ShopItem.types';
@@ -22,7 +24,13 @@ export const useShopItem = ({ data }: UseShopItemProps) => {
   };
 
   const handleAddToCart = () => {
-    addToCart(productData.id, quantity);
+    if (quantity > 0) {
+      addToCart(productData.id, quantity);
+
+      toast.success('O item foi adicionado ao carrinho.');
+    } else {
+      toast.error('Adicione quantidade maior a zero.');
+    }
   };
 
   return { productData, quantity, handleChangeQuantity, handleAddToCart };
