@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { MapPin, ShoppingCart } from 'phosphor-react';
 
 import { useHeader } from './Header.hooks';
@@ -7,7 +9,7 @@ import {
   HeaderContainer,
   Location,
   ShoppingCartAmount,
-  ShoppingCartButton,
+  ShoppingCartLink,
 } from './Header.styles';
 
 import CoffeeDeliveryLogo from '@/assets/images/logo-coffee-delivery.png';
@@ -17,7 +19,9 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <img src={CoffeeDeliveryLogo} />
+      <Link to="/">
+        <img src={CoffeeDeliveryLogo} />
+      </Link>
 
       <HeaderActions>
         <Location>
@@ -25,11 +29,13 @@ export function Header() {
           <span>Florianópolis, SC</span>
         </Location>
 
-        <ShoppingCartButton>
+        <ShoppingCartLink to="/cart">
           <ShoppingCart size={22} weight="fill" />
 
-          <ShoppingCartAmount>{cartList.length}</ShoppingCartAmount>
-        </ShoppingCartButton>
+          {!!cartList.length && (
+            <ShoppingCartAmount>{cartList.length}</ShoppingCartAmount>
+          )}
+        </ShoppingCartLink>
       </HeaderActions>
     </HeaderContainer>
   );

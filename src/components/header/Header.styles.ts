@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
@@ -35,7 +36,7 @@ export const Location = styled.div`
   font-size: 0.875rem;
 `;
 
-export const ShoppingCartButton = styled.button`
+export const ShoppingCartLink = styled(Link)`
   position: relative;
 
   display: flex;
@@ -48,6 +49,8 @@ export const ShoppingCartButton = styled.button`
 
   background-color: var(--color-yellow-light);
   color: var(--color-yellow-dark);
+
+  cursor: pointer;
 `;
 
 export const ShoppingCartAmount = styled.div`
