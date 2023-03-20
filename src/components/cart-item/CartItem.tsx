@@ -15,7 +15,10 @@ export function CartItem({ product }: CartItemProps) {
       <strong>R$ {cartItem.price}</strong>
 
       <CartItemsControls>
-        <QuantityInput onChange={handleChangeQuantity} />
+        <QuantityInput
+          initialValue={cartItem.quantity}
+          onQuantityChange={handleChangeQuantity}
+        />
       </CartItemsControls>
     </CartItemContainer>
   );

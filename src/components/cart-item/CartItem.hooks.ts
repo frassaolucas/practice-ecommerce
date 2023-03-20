@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { useProducts } from '@/hooks/products';
 
@@ -21,9 +21,8 @@ export function useCartItem({ product }: CartItemProps) {
     quantity,
   };
 
-  const handleChangeQuantity = (event: ChangeEvent<HTMLInputElement>) => {
-    const quantityValue = Number(event.target.value);
-    setQuantity(quantityValue);
+  const handleChangeQuantity = (newQuantity: number) => {
+    setQuantity(newQuantity);
   };
 
   return { cartItem, handleChangeQuantity };

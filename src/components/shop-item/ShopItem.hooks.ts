@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
 import { toast } from 'react-toastify';
 
@@ -18,9 +18,8 @@ export function useShopItem({ data }: UseShopItemProps) {
 
   const { addToCart } = useCart();
 
-  const handleChangeQuantity = (event: ChangeEvent<HTMLInputElement>) => {
-    const quantityValue = Number(event.target.value);
-    setQuantity(quantityValue);
+  const handleChangeQuantity = (newQuantity: number) => {
+    setQuantity(newQuantity);
   };
 
   const handleAddToCart = () => {

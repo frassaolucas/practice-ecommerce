@@ -42,7 +42,7 @@ export function ShopItem({ data }: ShopItemProps) {
         </ShopItemPrice>
 
         <ShopItemBuyActions>
-          <QuantityInput onChange={handleChangeQuantity} />
+          <QuantityInput onQuantityChange={handleChangeQuantity} />
 
           <AddToCartButton onClick={handleAddToCart}>
             <ShoppingCart weight="fill" size={18} />
