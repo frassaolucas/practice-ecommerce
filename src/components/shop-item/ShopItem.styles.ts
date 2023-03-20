@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ShopItemContainer = styled.div`
   width: 16rem;
@@ -51,7 +51,6 @@ export const ShopItemName = styled.div`
 
   color: var(--color-base-subtitle);
 
-  font-family: var(--font-family-header);
   font-size: 1.25rem;
 `;
 
@@ -77,7 +76,6 @@ export const ShopItemBuyContainer = styled.div`
 export const ShopItemPrice = styled.div`
   color: var(--color-base-text);
 
-  font-family: var(--font-family-header);
   font-size: 0.875rem;
 
   span {

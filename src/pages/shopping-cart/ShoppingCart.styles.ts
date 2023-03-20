@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { Link } from 'react-router-dom';
 
 export const CartContainer = styled.div`
   display: grid;
@@ -51,14 +52,14 @@ export const CartCheckoutTotalItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  font-size: 0.875rem;
 `;
 
 export const CartCheckoutTotal = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  color: var(--color-base-subtitle);
 
   font-size: 1.25rem;
   font-weight: 700;
@@ -76,6 +77,7 @@ export const ConfirmOrderButton = styled.button`
   color: var(--color-white);
 
   font-size: 0.875rem;
+  font-weight: 700;
   text-transform: uppercase;
 
   transition: background-color 0.2s ease;
@@ -113,6 +115,7 @@ export const EmptyCartLink = styled(Link)`
   color: var(--color-yellow);
 
   font-size: 0.875rem;
+  font-weight: 700;
   text-decoration: none;
   text-transform: uppercase;
 

@@ -1,5 +1,7 @@
 import { SmileyXEyes } from 'phosphor-react';
 
+import { CartItem } from '@/components/cart-item';
+
 import { useShoppingCart } from './ShoppingCart.hooks';
 import {
   CartCheckoutInfoContainer,
@@ -38,6 +40,10 @@ export function ShoppingCart() {
         <h3>Cafés selecionados</h3>
 
         <CartCheckoutInfoContainer>
+          {cartList.map((cartItem) => (
+            <CartItem key={cartItem.id} product={cartItem} />
+          ))}
+
           <CartCheckoutTotalContainer>
             <CartCheckoutTotalItem>
               <span>Total de itens</span>

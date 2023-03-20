@@ -25,7 +25,6 @@ export const GlobalStyles = createGlobalStyle`
     --color-background: #FAFAFA;
 
     // Font family
-    --font-family-header: 'Baloo 2', sans-serif;
     --font-family-text: 'Roboto', sans-serif;
 
     // Font weight
@@ -52,12 +51,13 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     background-color: var(--color-background);
+    color: var(--color-base-text);
 
     font-size: 1rem;
   }
 
   h1, h2, h3, h4, h5 {
-    font-family: var(--font-family-header);
+    font-family: var(--font-family-text);
   }
 
   input {

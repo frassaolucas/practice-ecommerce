@@ -30,7 +30,6 @@ export const IntroTitle = styled.div`
   h1 {
     color: var(--color-base-title);
 
-    font-family: var(--font-family-header);
     font-size: 3rem;
   }
 

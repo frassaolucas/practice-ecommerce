@@ -18,10 +18,9 @@ import {
 import { ShopItemProps } from './ShopItem.types';
 
 export function ShopItem({ data }: ShopItemProps) {
-  const { productData, quantity, handleChangeQuantity, handleAddToCart } =
-    useShopItem({
-      data,
-    });
+  const { productData, handleChangeQuantity, handleAddToCart } = useShopItem({
+    data,
+  });
 
   return (
     <ShopItemContainer>

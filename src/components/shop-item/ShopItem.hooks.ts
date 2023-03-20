@@ -37,5 +37,5 @@ export function useShopItem({ data }: UseShopItemProps) {
     }
   };
 
-  return { productData, quantity, handleChangeQuantity, handleAddToCart };
+  return { productData, handleChangeQuantity, handleAddToCart };
 }
