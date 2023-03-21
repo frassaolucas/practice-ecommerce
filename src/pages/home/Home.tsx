@@ -68,7 +68,7 @@ export function Home() {
         <ProductsGrid>
           {products ? (
             products.map((product) => (
-              <ShopItem key={product.id} data={product} />
+              <ShopItem key={product.id} product={product} />
             ))
           ) : (
             <p>Loading...</p>

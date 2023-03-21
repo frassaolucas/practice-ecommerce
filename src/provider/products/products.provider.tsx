@@ -15,11 +15,11 @@ export const ProductsContext = createContext<ProductsContextValues>(
 export function ProductsProvider({ children }: ProductsProviderProps) {
   const [products, setProducts] = useState<Product[]>([]);
 
-  const loadProducts = async (): Promise<void> => {
+  async function loadProducts(): Promise<void> {
     const productsList = await getProducts();
 
     setProducts(productsList);
-  };
+  }
 
   return (
     <ProductsContext.Provider value={{ products, loadProducts }}>

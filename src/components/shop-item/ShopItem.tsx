@@ -17,9 +17,9 @@ import {
 } from './ShopItem.styles';
 import { ShopItemProps } from './ShopItem.types';
 
-export function ShopItem({ data }: ShopItemProps) {
+export function ShopItem({ product }: ShopItemProps) {
   const { productData, handleChangeQuantity, handleAddToCart } = useShopItem({
-    data,
+    product,
   });
 
   return (

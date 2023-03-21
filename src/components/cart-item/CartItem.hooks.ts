@@ -1,29 +1,30 @@
-import { useState } from 'react';
-
+import { useCart } from '@/hooks/cart';
 import { useProducts } from '@/hooks/products';
 
 import { CartItemProps } from './CartItem.types';
 
-export function useCartItem({ product }: CartItemProps) {
-  const [quantity, setQuantity] = useState<number>(product.quantity);
-
+export const useCartItem = ({ product }: CartItemProps) => {
+  const { cartList, updateQuantity } = useCart();
   const { products } = useProducts();
 
   const productInfo = products.find((item) => item.id === product.id)!;
+  const productQuantity = cartList.find(
+    (cartItem) => cartItem.id === product.id
+  )!.quantity;
 
   const cartItem = {
     id: productInfo.id,
     image: productInfo.image,
     name: productInfo.name,
     price: new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(
-      productInfo.price * quantity
+      productInfo.price * productQuantity
     ),
-    quantity,
+    quantity: productQuantity,
   };
 
-  const handleChangeQuantity = (newQuantity: number) => {
-    setQuantity(newQuantity);
-  };
+  function handleChangeQuantity(newQuantity: number) {
+    updateQuantity(product.id, newQuantity);
+  }
 
   return { cartItem, handleChangeQuantity };
-}
+};

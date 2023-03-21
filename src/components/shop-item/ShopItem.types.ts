@@ -1,5 +1,5 @@
 export type ShopItemProps = {
-  data: ProductData;
+  product: ProductData;
 };
 
 export type UseShopItemProps = ShopItemProps;

@@ -16,7 +16,8 @@ import {
 } from './ShoppingCart.styles';
 
 export function ShoppingCart() {
-  const { cartList } = useShoppingCart();
+  const { cartList, deliveryCostPrice, cartItemsTotalPrice, totalPrice } =
+    useShoppingCart();
 
   if (!cartList.length) {
     return (
@@ -47,17 +48,17 @@ export function ShoppingCart() {
           <CartCheckoutTotalContainer>
             <CartCheckoutTotalItem>
               <span>Total de itens</span>
-              <span>R$ 29,70</span>
+              <span>R$ {cartItemsTotalPrice}</span>
             </CartCheckoutTotalItem>
 
             <CartCheckoutTotalItem>
               <span>Entrega</span>
-              <span>R$ 3,50</span>
+              <span>R$ ${deliveryCostPrice}</span>
             </CartCheckoutTotalItem>
 
             <CartCheckoutTotal>
               <span>Total</span>
-              <span>R$ 33,20</span>
+              <span>R$ {totalPrice}</span>
             </CartCheckoutTotal>
           </CartCheckoutTotalContainer>
 

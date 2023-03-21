@@ -9,7 +9,7 @@ export const CartContext = createContext<CartContextValues>(
 export function CartProvider({ children }: CartProviderProps) {
   const [cartList, setCartList] = useState<CartItem[]>([]);
 
-  const addToCart = (productId: number, quantity: number) => {
+  function addToCart(productId: number, quantity: number) {
     let cart = [...cartList];
 
     const productIndex = cart.findIndex((item) => item.id === productId);
@@ -21,13 +21,29 @@ export function CartProvider({ children }: CartProviderProps) {
     }
 
     setCartList(cart);
-  };
+  }
+
+  function updateQuantity(productId: number, quantity: number) {
+    const updatedCartList = cartList.map((cartItem) => {
+      if (cartItem.id === productId) {
+        return {
+          ...cartItem,
+          quantity,
+        };
+      }
+
+      return cartItem;
+    });
+
+    setCartList(updatedCartList);
+  }
 
   return (
     <CartContext.Provider
       value={{
         cartList,
         addToCart,
+        updateQuantity,
       }}
     >
       {children}

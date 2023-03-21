@@ -6,23 +6,23 @@ import { useCart } from '@/hooks/cart';
 
 import { UseShopItemProps } from './ShopItem.types';
 
-export function useShopItem({ data }: UseShopItemProps) {
-  const productData = {
-    ...data,
-    price: new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(
-      data.price
-    ),
-  };
-
+export function useShopItem({ product }: UseShopItemProps) {
   const [quantity, setQuantity] = useState<number>(0);
 
   const { addToCart } = useCart();
 
-  const handleChangeQuantity = (newQuantity: number) => {
-    setQuantity(newQuantity);
+  const productData = {
+    ...product,
+    price: new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(
+      product.price
+    ),
   };
 
-  const handleAddToCart = () => {
+  function handleChangeQuantity(newQuantity: number) {
+    setQuantity(newQuantity);
+  }
+
+  function handleAddToCart() {
     if (quantity > 0) {
       addToCart(productData.id, quantity);
 
@@ -34,7 +34,7 @@ export function useShopItem({ data }: UseShopItemProps) {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
-  };
+  }
 
   return { productData, handleChangeQuantity, handleAddToCart };
 }

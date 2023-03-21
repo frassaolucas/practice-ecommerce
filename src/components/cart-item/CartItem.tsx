@@ -3,7 +3,7 @@ import { useCartItem } from './CartItem.hooks';
 import { CartItemContainer, CartItemsControls } from './CartItem.styles';
 import { CartItemProps } from './CartItem.types';
 
-export function CartItem({ product }: CartItemProps) {
+export const CartItem = ({ product }: CartItemProps) => {
   const { cartItem, handleChangeQuantity } = useCartItem({ product });
 
   return (
@@ -22,4 +22,4 @@ export function CartItem({ product }: CartItemProps) {
       </CartItemsControls>
     </CartItemContainer>
   );
-}
+};
