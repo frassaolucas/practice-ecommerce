@@ -16,7 +16,7 @@ export const CartItem = ({ product }: CartItemProps) => {
 
       <CartItemsControls>
         <QuantityInput
-          initialValue={cartItem.quantity}
+          value={cartItem.quantity}
           onQuantityChange={handleChangeQuantity}
         />
       </CartItemsControls>

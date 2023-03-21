@@ -1,4 +1,4 @@
 export type InputProps = {
-  initialValue?: number;
+  value: number;
   onQuantityChange: (newQuantity: number) => void;
 };

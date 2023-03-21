@@ -25,6 +25,7 @@ export function useShopItem({ product }: UseShopItemProps) {
   function handleAddToCart() {
     if (quantity > 0) {
       addToCart(productData.id, quantity);
+      setQuantity(0);
 
       toast.success('O item foi adicionado ao carrinho.', {
         position: toast.POSITION.BOTTOM_RIGHT,
@@ -36,5 +37,5 @@ export function useShopItem({ product }: UseShopItemProps) {
     }
   }
 
-  return { productData, handleChangeQuantity, handleAddToCart };
+  return { quantity, productData, handleChangeQuantity, handleAddToCart };
 }

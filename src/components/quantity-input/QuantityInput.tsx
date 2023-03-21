@@ -4,13 +4,12 @@ import { useQuantityInput } from './QuantityInput.hooks';
 import { QuantityInputContainer } from './QuantityInput.styles';
 import { InputProps } from './QuantityInput.types';
 
-export function QuantityInput({ initialValue, onQuantityChange }: InputProps) {
+export function QuantityInput({ value, onQuantityChange }: InputProps) {
   const {
-    quantity,
     handleChangeQuantity,
     handleDecreaseNumberValue,
     handleIncreaseNumberValue,
-  } = useQuantityInput({ initialValue, onQuantityChange });
+  } = useQuantityInput({ value, onQuantityChange });
 
   return (
     <QuantityInputContainer>
@@ -18,7 +17,7 @@ export function QuantityInput({ initialValue, onQuantityChange }: InputProps) {
         <Minus size={14} />
       </button>
 
-      <input type="number" value={quantity} onChange={handleChangeQuantity} />
+      <input type="number" value={value} onChange={handleChangeQuantity} />
 
       <button type="button" onClick={handleIncreaseNumberValue}>
         <Plus size={14} />
