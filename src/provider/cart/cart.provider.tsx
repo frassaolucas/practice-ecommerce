@@ -38,12 +38,21 @@ export function CartProvider({ children }: CartProviderProps) {
     setCartList(updatedCartList);
   }
 
+  function removeFromCart(productId: number) {
+    const newCartList = cartList.filter(
+      (cartItem) => cartItem.id !== productId
+    );
+
+    setCartList(newCartList);
+  }
+
   return (
     <CartContext.Provider
       value={{
         cartList,
         addToCart,
         updateQuantity,
+        removeFromCart,
       }}
     >
       {children}

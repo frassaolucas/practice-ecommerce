@@ -43,5 +43,11 @@ export const QuantityInputContainer = styled.div<QuantityInputContainerProps>`
     border: 0;
 
     color: var(--color-purple);
+
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-purple-dark);
+    }
   }
 `;

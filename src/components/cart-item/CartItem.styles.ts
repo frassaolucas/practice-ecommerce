@@ -28,3 +28,31 @@ export const CartItemsControls = styled.div`
   align-items: center;
   gap: 0.5rem;
 `;
+
+export const CartRemoveButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  padding: 0.5rem;
+
+  border: 0;
+  border-radius: 6px;
+
+  background-color: var(--color-base-button);
+  color: var(--color-base-text);
+
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  line-height: 1;
+
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-base-hover);
+  }
+
+  svg {
+    color: var(--color-purple);
+  }
+`;

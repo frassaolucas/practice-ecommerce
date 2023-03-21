@@ -3,8 +3,8 @@ import { useProducts } from '@/hooks/products';
 
 import { CartItemProps } from './CartItem.types';
 
-export const useCartItem = ({ product }: CartItemProps) => {
-  const { cartList, updateQuantity } = useCart();
+export function useCartItem({ product }: CartItemProps) {
+  const { cartList, updateQuantity, removeFromCart } = useCart();
   const { products } = useProducts();
 
   const productInfo = products.find((item) => item.id === product.id)!;
@@ -26,5 +26,9 @@ export const useCartItem = ({ product }: CartItemProps) => {
     updateQuantity(product.id, newQuantity);
   }
 
-  return { cartItem, handleChangeQuantity };
-};
+  function handleRemoveItemFromCart() {
+    removeFromCart(cartItem.id);
+  }
+
+  return { cartItem, handleChangeQuantity, handleRemoveItemFromCart };
+}

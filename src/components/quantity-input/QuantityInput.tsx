@@ -14,13 +14,13 @@ export function QuantityInput({ value, onQuantityChange }: InputProps) {
   return (
     <QuantityInputContainer>
       <button type="button" onClick={handleDecreaseNumberValue}>
-        <Minus size={14} />
+        <Minus size={14} weight="bold" />
       </button>
 
       <input type="number" value={value} onChange={handleChangeQuantity} />
 
       <button type="button" onClick={handleIncreaseNumberValue}>
-        <Plus size={14} />
+        <Plus size={14} weight="bold" />
       </button>
     </QuantityInputContainer>
   );

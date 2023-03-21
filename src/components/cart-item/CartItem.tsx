@@ -1,10 +1,18 @@
-import { QuantityInput } from '../quantity-input';
+import { Trash } from 'phosphor-react';
+
+import { QuantityInput } from '@/components/quantity-input';
+
 import { useCartItem } from './CartItem.hooks';
-import { CartItemContainer, CartItemsControls } from './CartItem.styles';
+import {
+  CartItemContainer,
+  CartItemsControls,
+  CartRemoveButton,
+} from './CartItem.styles';
 import { CartItemProps } from './CartItem.types';
 
 export const CartItem = ({ product }: CartItemProps) => {
-  const { cartItem, handleChangeQuantity } = useCartItem({ product });
+  const { cartItem, handleChangeQuantity, handleRemoveItemFromCart } =
+    useCartItem({ product });
 
   return (
     <CartItemContainer>
@@ -19,6 +27,11 @@ export const CartItem = ({ product }: CartItemProps) => {
           value={cartItem.quantity}
           onQuantityChange={handleChangeQuantity}
         />
+
+        <CartRemoveButton onClick={handleRemoveItemFromCart}>
+          <Trash size={16} />
+          remover
+        </CartRemoveButton>
       </CartItemsControls>
     </CartItemContainer>
   );
