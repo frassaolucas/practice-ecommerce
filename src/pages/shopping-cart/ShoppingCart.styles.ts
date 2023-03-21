@@ -62,7 +62,7 @@ export const CartCheckoutTotal = styled.div`
   color: var(--color-base-subtitle);
 
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 `;
 
 export const ConfirmOrderButton = styled.button`
@@ -77,7 +77,7 @@ export const ConfirmOrderButton = styled.button`
   color: var(--color-white);
 
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
 
   transition: background-color 0.2s ease;
@@ -115,7 +115,7 @@ export const EmptyCartLink = styled(Link)`
   color: var(--color-yellow);
 
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   text-decoration: none;
   text-transform: uppercase;
 

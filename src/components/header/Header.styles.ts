@@ -71,7 +71,7 @@ export const ShoppingCartAmount = styled.div`
   color: var(--color-white);
 
   font-size: 0.675rem;
-  line-height: 1;
+  font-weight: var(--font-weight-bold);
 
   transform: translate(50%, -50%);
 `;
