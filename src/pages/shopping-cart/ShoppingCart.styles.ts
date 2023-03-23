@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
-export const CartContainer = styled.div`
+type CartBillingCardHeaderProps = {
+  variant: 'address' | 'payment';
+};
+
+export const CartContainer = styled.form`
   display: grid;
   grid-template-columns: 6fr 4fr;
   gap: 2rem;
@@ -32,7 +36,121 @@ export const CartContentRounded = styled(CartContent)`
   border-radius: 6px;
 `;
 
-export const CartCheckoutInfoContainer = styled(CartContent)`
+export const CartBillingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+`;
+
+export const CartBillingCard = styled(CartContentRounded)`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
+export const CartBillingCardHeader = styled.div<CartBillingCardHeaderProps>`
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 0.75rem;
+
+  p {
+    font-size: 0.875rem;
+  }
+
+  svg {
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+
+    color: ${(props) =>
+      props.variant === 'address'
+        ? 'var(--color-yellow-dark)'
+        : 'var(--color-purple)'};
+  }
+`;
+
+export const CartAddressContainer = styled.div`
+  display: grid;
+  grid-template-columns: minmax(33%, 1fr) 1fr 3.75rem;
+  column-gap: 0.75rem;
+  row-gap: 1rem;
+`;
+
+export const Input = styled.input`
+  padding: 0.75rem;
+
+  border: 1px solid var(--color-base-input);
+  border-radius: 4px;
+
+  &:nth-child(2) {
+    grid-column: 1 / -1;
+  }
+
+  &:nth-child(4) {
+    grid-column: span 2;
+  }
+
+  &:active,
+  &:focus {
+    border-color: var(--color-yellow-dark);
+  }
+`;
+
+export const CartPaymentMethodContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  input[type='radio'] {
+    position: fixed;
+
+    width: 0;
+
+    opacity: 0;
+  }
+
+  label {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    padding: 1rem;
+
+    border-radius: 6px;
+    border: 1px solid var(--color-base-button);
+
+    background-color: var(--color-base-button);
+
+    font-size: 0.75rem;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-base-hover);
+
+      background-color: var(--color-base-hover);
+    }
+  }
+
+  /* input interaction changing label */
+  input[type='radio']:checked + label {
+    border-color: var(--color-purple);
+
+    background-color: var(--color-purple-light);
+  }
+
+  svg {
+    color: var(--color-purple);
+  }
+`;
+
+export const CartReceiptContainer = styled(CartContent)`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -70,8 +188,8 @@ export const ConfirmOrderButton = styled.button`
 
   padding: 0.75rem;
 
-  border-radius: 6px;
   border: 0;
+  border-radius: 6px;
 
   background-color: var(--color-yellow);
   color: var(--color-white);
@@ -87,7 +205,7 @@ export const ConfirmOrderButton = styled.button`
   }
 `;
 
-export const EmptyCart = styled.div`
+export const EmptyCart = styled(CartContentRounded)`
   flex: 1;
 
   display: flex;
@@ -97,11 +215,6 @@ export const EmptyCart = styled.div`
   gap: 2rem;
 
   margin-bottom: 4rem;
-  padding: 2.5rem;
-
-  border-radius: 6px;
-
-  background-color: var(--color-base-card);
 
   text-align: center;
 `;

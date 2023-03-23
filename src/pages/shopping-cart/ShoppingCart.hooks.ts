@@ -1,11 +1,15 @@
 import { useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { useCart } from '@/hooks/cart';
 import { useProducts } from '@/hooks/products';
 
+import { FormData } from './ShoppingCart.types';
+
 export function useShoppingCart() {
   const { cartList } = useCart();
   const { products } = useProducts();
+  const { register, handleSubmit } = useForm<FormData>();
 
   const cartItemsTotal = useMemo(
     () =>
@@ -46,5 +50,40 @@ export function useShoppingCart() {
     [cartList]
   );
 
-  return { cartList, deliveryCostPrice, cartItemsTotalPrice, totalPrice };
+  const handleConfirmOrder = ({
+    payment,
+    zipCode,
+    street,
+    number,
+    complement,
+    neighborhood,
+    city,
+    state,
+  }: FormData) => {
+    const payload = {
+      address: {
+        zipCode,
+        street,
+        number,
+        complement,
+        neighborhood,
+        city,
+        state,
+      },
+      payment,
+      products: cartList,
+    };
+
+    console.log('payload', payload);
+  };
+
+  return {
+    cartList,
+    register,
+    deliveryCostPrice,
+    cartItemsTotalPrice,
+    totalPrice,
+    handleSubmit,
+    handleConfirmOrder,
+  };
 }
