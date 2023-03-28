@@ -32,6 +32,7 @@ export function ShoppingCart() {
   const {
     cartList,
     register,
+    errors,
     deliveryCostPrice,
     cartItemsTotalPrice,
     totalPrice,
@@ -64,24 +65,36 @@ export function ShoppingCart() {
               <span>Endereço de Entrega</span>
 
               <p>Informe o endereço onde deseja receber seu pedido</p>
+
+              {(errors.zipCode ||
+                errors.street ||
+                errors.number ||
+                errors.neighborhood ||
+                errors.city ||
+                errors.state) && (
+                <p className="error">Preencha os campos indicados abaixo.</p>
+              )}
             </CartBillingCardHeader>
 
             <CartAddressContainer>
               <Input
                 type="text"
                 placeholder="CEP"
-                {...register('zipCode', { required: true })}
+                error={!!errors?.zipCode?.type}
+                {...register('zipCode', { required: 'Preencha este campo' })}
               />
               <Input
                 type="text"
                 placeholder="Rua"
-                {...register('street', { required: true })}
+                error={!!errors?.street}
+                {...register('street', { required: 'Preencha este campo' })}
               />
               <Input
                 type="text"
                 placeholder="Número"
                 inputMode="numeric"
-                {...register('number', { required: true })}
+                error={!!errors?.number}
+                {...register('number', { required: 'Preencha este campo' })}
               />
               <Input
                 type="text"
@@ -91,16 +104,21 @@ export function ShoppingCart() {
               <Input
                 type="text"
                 placeholder="Bairro"
-                {...register('neighborhood', { required: true })}
+                error={!!errors?.neighborhood}
+                {...register('neighborhood', {
+                  required: 'Preencha este campo',
+                })}
               />
               <Input
                 type="text"
                 placeholder="Cidade"
-                {...register('city', { required: true })}
+                error={!!errors?.city}
+                {...register('city', { required: 'Preencha este campo' })}
               />
               <Input
                 type="text"
                 placeholder="UF"
+                error={!!errors?.state}
                 {...register('state', { required: true })}
               />
             </CartAddressContainer>
@@ -115,6 +133,10 @@ export function ShoppingCart() {
               <p>
                 O pagamento é feito na entrega. Escolha a forma que deseja pagar
               </p>
+
+              {errors.payment && (
+                <p className="error">Preencha a forma de pagamento.</p>
+              )}
             </CartBillingCardHeader>
 
             <CartPaymentMethodContainer>

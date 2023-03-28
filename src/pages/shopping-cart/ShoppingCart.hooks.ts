@@ -9,7 +9,11 @@ import { FormData } from './ShoppingCart.types';
 export function useShoppingCart() {
   const { cartList } = useCart();
   const { products } = useProducts();
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormData>();
 
   const cartItemsTotal = useMemo(
     () =>
@@ -80,6 +84,7 @@ export function useShoppingCart() {
   return {
     cartList,
     register,
+    errors,
     deliveryCostPrice,
     cartItemsTotalPrice,
     totalPrice,

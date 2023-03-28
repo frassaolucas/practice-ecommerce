@@ -11,6 +11,8 @@ export const GlobalStyles = createGlobalStyle`
     --color-purple: #8047F8;
     --color-purple-dark: #4B2995;
 
+    --color-error: #FF3333;
+
     --color-base-label: #8D8686;
     --color-base-text: #574F4D;
     --color-base-subtitle: #403937;

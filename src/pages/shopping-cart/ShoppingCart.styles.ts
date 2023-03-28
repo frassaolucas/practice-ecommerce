@@ -6,6 +6,10 @@ type CartBillingCardHeaderProps = {
   variant: 'address' | 'payment';
 };
 
+type InputProps = {
+  error?: boolean;
+};
+
 export const CartContainer = styled.form`
   display: grid;
   grid-template-columns: 6fr 4fr;
@@ -51,11 +55,15 @@ export const CartBillingCard = styled(CartContentRounded)`
 export const CartBillingCardHeader = styled.div<CartBillingCardHeaderProps>`
   display: grid;
   grid-template-columns: max-content 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr) min-content;
   column-gap: 0.75rem;
 
   p {
     font-size: 0.875rem;
+
+    &.error {
+      color: var(--color-error);
+    }
   }
 
   svg {
@@ -76,11 +84,16 @@ export const CartAddressContainer = styled.div`
   row-gap: 1rem;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<InputProps>`
   padding: 0.75rem;
 
-  border: 1px solid var(--color-base-input);
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${(props) =>
+    props.error ? 'var(--color-error)' : 'var(--color-base-input)'};
   border-radius: 4px;
+
+  background: var(--color-base-input);
 
   &:nth-child(2) {
     grid-column: 1 / -1;
@@ -92,7 +105,7 @@ export const Input = styled.input`
 
   &:active,
   &:focus {
-    border-color: var(--color-yellow-dark);
+    ${(props) => !props.error && 'border-color: var(--color-yellow-dark);'}
   }
 `;
 
