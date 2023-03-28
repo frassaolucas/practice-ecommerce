@@ -1,14 +1,18 @@
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { useCart } from '@/hooks/cart';
+import { useOrder } from '@/hooks/order';
 import { useProducts } from '@/hooks/products';
 
 import { FormData } from './ShoppingCart.types';
 
-export function useShoppingCart() {
+export function useShoppingCartPage() {
   const { cartList } = useCart();
   const { products } = useProducts();
+  const { saveOrder } = useOrder();
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors },
@@ -64,7 +68,7 @@ export function useShoppingCart() {
     city,
     state,
   }: FormData) => {
-    const payload = {
+    const order = {
       address: {
         zipCode,
         street,
@@ -76,9 +80,12 @@ export function useShoppingCart() {
       },
       payment,
       products: cartList,
+      itemsTotal: cartItemsTotal,
+      deliveryCost: deliveryCost,
     };
 
-    console.log('payload', payload);
+    saveOrder(order);
+    navigate('/pedido');
   };
 
   return {

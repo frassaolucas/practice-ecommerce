@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useProducts } from '@/hooks/products';
 
-export function useHome() {
+export function useHomePage() {
   const { products, loadProducts } = useProducts();
 
   useEffect(() => {

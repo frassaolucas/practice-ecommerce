@@ -29,7 +29,7 @@ export function Header() {
           <span>Florianópolis, SC</span>
         </Location>
 
-        <ShoppingCartLink to="/cart">
+        <ShoppingCartLink to="/carrinho">
           <ShoppingCart size={22} weight="fill" />
 
           {!!cartList.length && (

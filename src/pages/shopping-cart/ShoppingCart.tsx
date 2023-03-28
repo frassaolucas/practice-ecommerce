@@ -9,7 +9,7 @@ import {
 
 import { CartItem } from '@/components/cart-item';
 
-import { useShoppingCart } from './ShoppingCart.hooks';
+import { useShoppingCartPage } from './ShoppingCart.hooks';
 import {
   CartAddressContainer,
   CartBillingCard,
@@ -28,7 +28,7 @@ import {
   Input,
 } from './ShoppingCart.styles';
 
-export function ShoppingCart() {
+export function ShoppingCartPage() {
   const {
     cartList,
     register,
@@ -38,7 +38,7 @@ export function ShoppingCart() {
     totalPrice,
     handleSubmit,
     handleConfirmOrder,
-  } = useShoppingCart();
+  } = useShoppingCartPage();
 
   if (!cartList.length) {
     return (
@@ -143,7 +143,7 @@ export function ShoppingCart() {
               <input
                 type="radio"
                 id="creditCard"
-                value="credit-card"
+                value="Cartão de crédito"
                 {...register('payment', { required: true })}
               />
               <label htmlFor="creditCard">
@@ -154,7 +154,7 @@ export function ShoppingCart() {
               <input
                 type="radio"
                 id="debitCard"
-                value="debit-card"
+                value="Cartão de débito"
                 {...register('payment', { required: true })}
               />
               <label htmlFor="debitCard">
@@ -165,7 +165,7 @@ export function ShoppingCart() {
               <input
                 type="radio"
                 id="money"
-                value="money"
+                value="Dinheiro"
                 {...register('payment', { required: true })}
               />
               <label htmlFor="money">

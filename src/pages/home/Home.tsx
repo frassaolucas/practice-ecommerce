@@ -12,10 +12,10 @@ import {
 
 import IntroImg from '@/assets/images/intro-image.png';
 import { ShopItem } from '@/components/shop-item';
-import { useHome } from './Home.hooks';
+import { useHomePage } from './Home.hooks';
 
-export function Home() {
-  const { products } = useHome();
+export function HomePage() {
+  const { products } = useHomePage();
 
   return (
     <HomeContainer>
